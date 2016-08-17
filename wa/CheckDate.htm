@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Untitled Page</title>
+    <script>
+    
+
+function kkk()
+{
+var cal_tim = "2004/3/3 5:";
+var str = "START http://www.webreference.com/js/index.html END";
+var ar = cal_tim.match(/\d{4}[/-](0?[1-9]|1[0-2])[/-](3[0-1]|[2|1]\d|0?[1-9]) (((am|pm)(0?[1-9]|1[0-2]))|([0-1]?\d|2[0-3])):[0-5]?\d/);
+	if(ar)
+		alert(true);
+	else
+		alert(false);
+	//alert(ar.length);
+	return;
+	var reg = new RegExp("Bart", "gi");
+	reg.compile("(abc).*(567)", "i")
+	var ar = reg.exec("abcdefg 1234567");
+	alert(RegExp.$1 + " " + RegExp.$2 + " " + RegExp.$3);
+	return;
+	//alert(ar.index);
+	alert(reg.test("sdfBart"));
+	var kkk = "abc----123";
+	alert(kkk);
+	var ccc = kkk.replace(/(abc).*(123)/, "$2 $1");
+	alert(ccc);
+	document.write("a string".split(/ */).join(", "));
+	for(i=0; i<ar.length; i++) 
+		alert(ar[i]);
+	if(ar.length > 0)
+		{
+			//alert(reg.lastIndex);
+			//alert(reg.ignoreCase);
+			//alert(reg.global);
+			alert(reg.source);
+		}
+	/*
+	if()
+	{
+		alert(0);
+		//alert(ar.index);
+		
+	}
+	else
+		alert("no");
+	alert(reg.
+	*/
+	return;
+	var regDateTime = /^\d{4}[\/|-](0?[1-9]|1[0-2])[\/|-](3[0-1]|[2|1]\d|0?[1-9]) (((am|pm)(0?[1-9]|1[0-2]))|([0-1]?\d|2[0-3])):[0-5]?\d$/i;
+	var rd1 = "^\d{4}[\/|-](0?[1-9]|1[0-2])[\/|-](3[0-1]|[2|1]\d|0?[1-9]) (((am|pm)(0?[1-9]|1[0-2]))|([0-1]?\d|2[0-3])):[0-5]?\d$";
+	var timS = "2005/05/05 05:59";
+	var timE = "2005/05/05 05:60";
+	//var ar = regDateTime.exec(cal_tim);
+	
+	if (timS.match(regDateTime)) { alert("timS Success!");}
+	if (timE.match(regDateTime)) { alert("timE Success!");}
+	
+	
+	//alert(1);
+	//alert(ar.index);
+	//alert(ar.input);
+	//alert(ar[0]);
+	//dateTime
+	//d.match(/^\-?\d{4,}-(0[1-9]|1[0-2])-(3[0-1]|2\d|1\d|0[1-9])T[0-2]\d:[0-5]\d:[0-5]\d(.\d+)?(Z|[\-+](0\d|1[0-4]):[0-5]\d)?$/)
+	//alert(0);
+
+}
+kkk();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

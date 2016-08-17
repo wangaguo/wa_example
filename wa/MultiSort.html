@@ -1,0 +1,108 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=big5" />	
+</head>
+<body>
+	<fieldset id="SortWidget">
+		<legend>排序</legend>
+		<div id="SortItem" style="">
+		</div>
+		<select id="SortExpression">
+			<option value="ldl_cus_no">編號</option>
+			<option value="ldl_gr2_cod">版本</option>
+			<option value="ldl_per_num">訂閱期數</option>
+			<option value="ldl_stp_typ">STOP類別</option>
+			<option value="ldl_typ">契約類別</option>
+			<option value="ldl_bkg_tim">預約時間</option>
+		</select>
+		<select id="SortDirection">
+			<option value="asc">↓</option>
+			<option value="desc">↑</option>
+		</select>
+		<input type="button" value="增加" onclick="AddSortItem();" />
+		<input type="button" value="清除" onclick="ClearSortItem();" />
+	</fieldset>
+	
+	<style type="text/css" media="all">
+		#SortWidget { border:solid 1px; }
+		#SortWidget .DelButton
+		{
+				
+				height: 18px;
+				padding: 0px;
+		}
+	</style>
+	<script type="text/javascript" language="javascript">
+		function SortMain(SortItems)
+		{
+			this.SortItems = SortItems || [];
+		}
+		
+		function SortItem()
+		{
+			this.name = "";
+			this.id = "";
+			this.Direction = "";
+			this.DirectionIcon = "";
+		}
+		
+		function Remove(item)
+		{
+			for(i=item; i<this.length; i++)
+				this[i] = this[i+1];
+			this.length -= 1;
+		}
+		Array.prototype.Remove = Remove;
+		
+		var mySort = new SortMain();
+		function AddSortItem()
+		{	
+			if(mySort.SortItems.length >=3) return;
+			var SortExpression = document.getElementById("SortExpression");
+			var SortDirection = document.getElementById("SortDirection");
+			var Item = new SortItem();
+			Item.name = SortExpression.item(SortExpression.selectedIndex).text.toString();
+			Item.id = SortExpression.value;
+			Item.Direction = SortDirection.value;
+			Item.DirectionIcon = SortDirection.item(SortDirection.selectedIndex).text.toString();
+			mySort.SortItems.push(Item);
+			GenSortShow();
+		}
+		
+		function RemoveSortItem(item)
+		{
+			mySort.SortItems.Remove(item);
+			GenSortShow();
+		}
+		
+		function ClearSortItem()
+		{
+			mySort.SortItems = [];
+			GenSortShow();
+		}
+		
+		function GenSortShow()
+		{
+			var show = "";
+			for(i=0; i<mySort.SortItems.length; i++)
+				show += mySort.SortItems[i].name + ' ' + mySort.SortItems[i].DirectionIcon + '<input type="button" value="X" class="DelButton" onclick="javascript:RemoveSortItem(' + i + ')" /><br/>';
+				
+			document.getElementById("SortItem").innerHTML = show;
+		}
+		
+		function GenSortString()
+		{
+			var sSort = "";
+			for(i=0; i<mySort.SortItems.length; i++)
+			{
+				if(sSort != '') sSort += ", ";
+				sSort += mySort.SortItems[i].id + ' ' + mySort.SortItems[i].Direction;
+			}
+			return sSort;
+		}
+		
+	</script>
+	<a href="#" onclick="alert(GenSortString());">test</a>
+</body>
+
+</html>

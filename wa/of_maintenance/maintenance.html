@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>OpenFoundry Maintenance</title>
+  <link rel="stylesheet" href="//http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/ui-lightness/jquery-ui.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/redmond/jquery-ui.css" type="text/css" />
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js" type="text/javascript"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
+
+  		
+  <style>
+    #main { padding: 0.4em; position: relative; background: #fff; }
+    #main h2 { margin: 0; padding: 0.4em; text-align: center; }
+    .center { width: 600px; margin-left:auto; margin-right:auto; color:red; }
+  </style>
+   	
+
+  <script>
+  $(document).ready(function() {
+    var lang = window.navigator.userLanguage || window.navigator.language ;		
+    var relang=lang.toLowerCase();
+    switch (relang){
+      case "zh-cn":
+      case "zh-tw":
+        $(".en").css("display","none");
+        $(".tw").css("display","block");
+        break;
+      default:
+        $(".en").css("display","block");
+        $(".tw").css("display","none");
+    }
+  });
+  </script> 
+  
+</head>
+<body>
+<div class="center">
+  <img src="logo-of.png"/>
+  <div id="main" class="ui-widget-content ui-corner-all">
+    <h2 class="ui-widget-header ui-corner-all">
+      <span class="tw">系統維護</span>
+
+      <noscript> / </noscript>
+      <span class="en">Maintenance</span>
+    </h2>
+    
+    <p class="tw">
+      時間: 7/14(三) 早上 8:00 至 7/15(四) 早上 8:00<br/>
+      <br/>
+      Dear 使用者您好:<br/>
+
+      <br/>
+      感謝大家的支持，為了提供更好的功能服務與操作介面， OpenFoundry 將與 Who's Who 及 OSSF 主網站，進行功能及介面的整合作業，7/14 將暫停服務一天以進行整合工作，並將於 7/15 以全新的版面及架構呈現給各位。<br/>
+      如對整合作業有任何的疑問，請隨時來信contact@openfoundry.org 與我們聯絡。<br/>
+      <br/>
+      自由軟體鑄造場 敬上<br/>
+    </p>
+    <noscript><hr/></noscript>
+
+    <p class="en">
+      <br/>
+      Time: From 8:00 am on July 14 to 8:00 am on July 15, 2010. <br/>
+      <br/>
+      Dear users, <br/>
+      <br/>
+      Many thanks for your kindly support. In order to provide the better service capability and user interface, OpenFoundry, Who's Who and the OSSF main site are going to have a large-scale function combination and interface integration on Wednesday, 14 JUL, 2010.<br/>
+
+      <br/>
+      The service will be temporarily offline from 8:00 am on July 14. After the upgradation has been finished, OSSF will soon present the brand new OpenFoundry layout and structure to you on July 15.<br/>
+      <br/>
+      We apologize for any inconvenience that may cause by this upgradation task.<br/>
+      <br/>
+      Please feel free to contact us at contact@openfoundry.org if you need any further information for this service suspension.<br/>
+      <br/>
+
+      Best regards, Open Source Software Foundry
+    </p>
+  </div>
+</div>
+
+</body>
+</html>
+

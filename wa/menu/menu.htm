@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>地球科學研究所-主選單</title>
+	<style>
+* {
+	font-family:"Arial","Helvetica","sans-serif";
+	font-size:15px;
+}
+
+body {
+	behavior: url(csshover2.htc); /* call hover behaviour file */
+	background-attachment: scroll;
+	background-color: #A8B5B4;
+	background-image: url(images/r_menu_bg.gif);
+	background-repeat: no-repeat;
+	background-position: left top;
+	padding-left: 0px;
+}
+
+.menu { }
+.menu .subimg { color:gray; float:right; font-size:80%; margin-top:8px; padding:0px; }
+.menu ul { list-style-type:none; padding:0px; margin:0px; }
+.menu li { width:180px; }
+.menu li ul { display:block; }
+.menu li:hover ul { display:block; }
+.menu li:hover .subimg { color:white; }
+.menu .menua{
+	background-attachment:scroll;
+	background-image:url(images/r_menu_btn.gif);
+	background-position:left bottom;
+	background-repeat:no-repeat;
+	border-color:transparent;
+	border-style:solid;
+	border-width:0px 0px;
+	color:#FFFFFF;
+	height:24px;
+	padding:5px 5px 5px 15px;
+	text-decoration:none;
+	width:100%;
+	display:block;
+	font-size:1em;
+}
+
+.menua:hover{ 
+	background-image:url(images/r_menu_btn1.gif);
+	background-position:left bottom;
+	background-repeat:no-repeat;
+	text-decoration:none;
+}
+
+.menu .submenu {
+	padding:0px;
+	display:block;
+}
+
+.menu .submenu a {
+	background-image:none;
+	border-style:none;
+	color:#3B5452;
+	font-size:80%;
+	margin:0px 2px;
+	padding:2px 0px 2px 30px;
+	display:block;
+	height:24px;
+}
+
+.menu .submenu a:hover {
+	background-color:#D9E5EF;
+	color:#687D7C;
+	text-decoration:underline;
+}
+		
+	</style>
+	
+<script type="text/javascript">
+	function setMenuClick() {
+		var menuitem = document.getElementById('leftmenu').getElementsByTagName('A');
+		for(i=0; i<menuitem.length; i++)
+		{
+			if(menuitem[i].getAttribute('class') == 'menua' || menuitem[i].getAttribute('classname') == 'menua') {
+				menuitem[i].id = 'menu'+i;
+				menuitem[i].href = "javascript:submenuSwitch('menu"+i+"')";
+				menuitem[i].nextSibling.nextSibling.style.display = 'none';
+				menuitem[i].innerHTML = '<span class="subimg">▼</span>' + menuitem[i].innerHTML;
+			}
+		}
+	}
+	
+	function submenuSwitch(id)
+	{ 
+		document.getElementById(id).blur();
+		var submenu = document.getElementById(id).nextSibling.nextSibling;
+		if(submenu.style.display == 'none')
+			submenu.style.display = 'block';
+		else
+			submenu.style.display = 'none';
+	}
+	
+	//Scott Andrew’s original addEvent() function
+	function addEvent(elm, evType, fn, useCapture) {
+		if (elm.addEventListener) {
+			elm.addEventListener(evType, fn, useCapture);
+			return true;
+		}
+		else if (elm.attachEvent) {
+			var r = elm.attachEvent('on' + evType, fn);
+			return r;
+		}
+		else {
+			elm['on' + evType] = fn;
+		}
+	}
+	addEvent(window, 'load', setMenuClick, false);
+
+</script>
+</head>
+<body onload="">
+<div id="leftmenu" class="menu">
+	<ul>
+		<li>
+			<a href="#" class="menua">最新消息</a>
+			<ul class="submenu">
+				<li>
+					<a target="main" href="#">重要訊息</a>
+				</li>
+				<li>
+					<a target="main" href="#">演講公告</a>
+				</li>
+				<li>
+					<a target="main" href="#">學術會議</a>
+				</li>
+				<li>
+					<a target="main" href="#">徵人啟事</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="#" class="menua">關於我們</a>
+			<ul class="submenu">
+				<li>
+					<a target="main" href="#">發展沿革</a>
+				</li>
+				<li>
+					<a target="main" href="#">組織架構</a>
+				</li>
+				<li>
+					<a target="main" href="#">所長簡介</a>
+				</li>
+				<li>
+					<a target="main" href="#">諮詢委員</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="#" class="menua">研究人員</a>
+			<ul class="submenu">
+				<li>
+					<a target="main" href="#">研究人員</a>
+				</li>
+				<li>
+					<a target="main" href="#">博士後研究</a>
+				</li>
+				<li>
+					<a target="main" href="#">研究技術人員</a>
+				</li>
+				<li>
+					<a target="main" href="#">訪問學者</a>
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+</body>
+</html>

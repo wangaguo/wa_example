@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml/DTD/xhtml-transitional.dtd">
+<html>
+<head> 
+<title>Email to Unicode Converter</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script language="javascript" type="text/javascript"> 
+<!-- 
+
+function emailEncode()
+{
+  if(document.forms[0].ascii.value != ''){ 
+    var vText = document.forms[0].ascii.value;
+		var vEmails = vText.split('\n');
+		var vMailto = convertToUnicode('mailto:'); 
+		document.forms[0].unicode.value = '';
+		for(vEmail in vEmails)
+		{
+      var vEncoded = convertToUnicode(vEmails[vEmail]); 
+			document.forms[0].unicode.value += vEmails[vEmail] +': <a href="' + vMailto + vEncoded + '">' + vEncoded + '</a>\n';
+		}
+    document.getElementById("test").innerHTML = document.forms[0].unicode.value;
+  } 	
+}
+	
+
+function convertToUnicode(source) { 
+  result = ''; 
+  for (i=0; i<source.length; i++) 
+    result += '&#' + source.charCodeAt(i) + ';'; 
+  return result; 
+} 
+
+//--> 
+</script> 
+</head> 
+
+<body>
+<h1>Email Converter</h1>
+<p> 
+A utility to convert Email to Unicode with link.
+</p> 
+
+<form name="blah" action=""> 
+<br /> 
+<b>Email Text:</b><br />
+<textarea name="ascii" size="75" style="width:90%; height:100px"></textarea> 
+&nbsp;<input type="button" value="Encode" onclick="emailEncode()" />
+<br /><br /><br /> 
+
+<b>Unicode Email:</b><br /> 
+<textarea name="unicode" size="75" style="width:90%; height:100px"></textarea>
+<div id="test"></div>
+<br /><br /><br /> 
+<input type="reset" value="Clear" onclick="document.getElementById('unicodeHTML').innerHTML = ''" />
+</form>
+
+</body>
+</html>

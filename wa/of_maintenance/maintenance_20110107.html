@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>OpenFoundry Maintenance</title>
+  <link rel="stylesheet" href="//http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/ui-lightness/jquery-ui.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/redmond/jquery-ui.css" type="text/css" />
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js" type="text/javascript"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
+
+  		
+  <style>
+    #main { padding: 0.4em; position: relative; background: #fff; }
+    #main h2 { margin: 0; padding: 0.4em; text-align: center; }
+    .center { width: 600px; margin-left:auto; margin-right:auto; color:red; }
+  </style>
+   	
+
+  <script>
+  $(document).ready(function() {
+    var lang = window.navigator.userLanguage || window.navigator.language ;		
+    var relang=lang.toLowerCase();
+    switch (relang){
+      case "zh-cn":
+      case "zh-tw":
+        $(".en").css("display","none");
+        $(".tw").css("display","block");
+        break;
+      default:
+        $(".en").css("display","block");
+        $(".tw").css("display","none");
+    }
+  });
+  </script> 
+  
+</head>
+<body>
+<div class="center">
+  <img src="logo-of.png"/>
+  <div id="main" class="ui-widget-content ui-corner-all">
+    <h2 class="ui-widget-header ui-corner-all">
+      <span class="tw">系統維護</span>
+
+      <noscript> / </noscript>
+      <span class="en">Maintenance</span>
+    </h2>
+    
+    <p class="tw">
+      時間: 2011/1/7 (五) 上午 9:00 至 下午 6:00<br/>
+      影響: OpenFoundry 所有服務 (不含應用典範)<br/>
+      事由: OpenFoundry 系統維護<br/>
+      <br/>
+      親愛的 OpenFoundry 使用者 您好:<br/>
+      <br/>
+      感謝大家對 自由軟體鑄造場 的支持，為了提供更穩定的服務品質，OpenFoundry 將進行系統維護工程，屆時將暫停 OpenFoundry 的服務，但不包含應用典範服務。造成您的不便及困擾之處，敬請見諒，如有任何問題請來信至contact@openfoundry.org，感謝您的支持及配合。<br/>
+      <br/>
+      OSSF 敬上<br/>
+    </p>
+    <noscript><hr/></noscript>
+
+    <p class="en">
+      Dear OpenFoundry Users,<br/>
+      <br/>
+      We would like to thank you for your continual support for the Open Source Software Foundry.<br/>
+      <br/>
+      In order to provide a more stable system, OpenFoundry will be suspend for system
+      maintenance between <b>09:00 till 18:00 on 2011/1/7 (Friday) at Taiwan time</b>. All services except the
+      Open-Source Hosting and Promotion Service will be halted.<br/>
+      <br/>
+      If you have any questions or concerns, please don't hesitate to email us at contact@openfoundry.org. Thank you for your cooperation,<br/>
+      <br/>
+      Sincerely,<br/>
+      <br/>
+      OSSF<br/>
+    </p>
+  </div>
+</div>
+
+</body>
+</html>
+

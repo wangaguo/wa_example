@@ -1,0 +1,73 @@
+﻿<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  //計算工時
+  $("#process").click(function(){
+      var lines = $("#time_data").val().split('\n');
+      var answer = "";
+      var calculate = "0";
+      $(lines).each(function(i, l){
+          var time_start_end = l.match(/[\d\/]+\s+([\d:]{5})~([\d:]{5})/) //.split('~');
+          
+          if(!time_start_end) return;
+          var time_start = new Date();
+          time_start.setHours(time_start_end[1].split(':')[0]);
+          time_start.setMinutes(time_start_end[1].split(':')[1]);
+          
+          var time_end = new Date();
+          time_end.setHours(time_start_end[2].split(':')[0]);
+          time_end.setMinutes(time_start_end[2].split(':')[1]);
+          
+          diff_minutes = Math.floor((time_end.getTime() - time_start.getTime())/1000/60);
+          
+          answer += l + ' > ' + diff_minutes + 'm</br>';
+          calculate += " + " + diff_minutes;
+        });
+        
+      var display = answer + '<br/>' + calculate + ' = ' + eval(calculate);
+      $("#display").html(display);
+    });
+  
+  //結算  
+  $("#process_total").click(function(){
+      var lines = $("#time_data").val().split('\n');
+      var calculate = "0";
+      
+      $(lines).each(function(i, l){
+          var time_m = l.match(/^.*\s*-\s*(\d+)m$/)
+          if(!time_m) return;
+          
+          calculate += " + " + time_m[1];
+        });
+      
+      var display = calculate + " = " + eval(calculate);
+      var money = "(" + eval(calculate) + "/60)*700";
+      display += "<br />" + money + " = " + eval(money);
+      $("#display").html(display);
+    });
+    
+  });
+</script>
+</head>
+<body>
+<textarea id="time_data" style="height:300px; width:800px;">
+計算工時格式：
+20101225 06:29~07:08
+20101225 10:52~12:52
+
+結算格式：
+# [ 詢問 ] 某某問題 (2010/07/21) - 148m
+# [ 需求 ] 功能修改 (2010/07/28) - 120m
+# [ 需求 ] 功能新增 (2010/09/01) - 205m
+
+</textarea>
+<br />
+<input type="button" id="process" value="計算工時" />
+<input type="button" id="process_total" value="結算" />
+
+<div id="display"></div>
+</body>
+</html>

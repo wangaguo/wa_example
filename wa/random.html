@@ -1,0 +1,16 @@
+<pre>
+Max Number: <input type="text" id="MaxNum" value="15">
+<input type="button" value="RUN" onclick="random()">
+Random Number: <span id="RandomNum"></span>
+</pre>
+<script>
+function random()
+{
+  var MaxNum =  document.getElementById("MaxNum").value;
+  if(/^\d*$/.test(MaxNum) == false) alert("Max Number is not number!");
+
+  document.getElementById("RandomNum").innerHTML =
+      Math.ceil(Math.random() * parseInt(MaxNum));
+}
+random();
+</script>

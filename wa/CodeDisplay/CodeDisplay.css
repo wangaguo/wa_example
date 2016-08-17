@@ -1,0 +1,11 @@
+code {
+	display:block;
+	border:dashed 1px blue;
+	padding:10px;
+	margin:10px;
+	overflow-x:auto;
+}
+code ol li {
+	list-style-type:decimal;
+	border-bottom:dotted 1px grey;
+}

@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+<meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"><title>test</title>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+
+/*
+   name - name of the cookie
+   value - value of the cookie
+   [expires] - expiration date of the cookie
+     (defaults to end of current session)
+   [path] - path for which the cookie is valid
+     (defaults to path of calling document)
+   [domain] - domain for which the cookie is valid
+     (defaults to domain of calling document)
+   [secure] - Boolean value indicating if the cookie transmission requires
+     a secure transmission
+   * an argument defaults when it is assigned null as a placeholder
+   * a null placeholder is not required for trailing omitted arguments
+*/
+
+function setCookie(name, value, expires, path, domain, secure) {
+  var curCookie = name + "=" + escape(value) +
+      ((expires) ? "; expires=" + expires.toGMTString() : "") +
+      ((path) ? "; path=" + path : "") +
+      ((domain) ? "; domain=" + domain : "") +
+      ((secure) ? "; secure" : "");
+  document.cookie = curCookie;
+}
+
+
+/*
+  name - name of the desired cookie
+  return string containing value of specified cookie or null
+  if cookie does not exist
+*/
+
+function getCookie(name) {
+  var dc = document.cookie;
+  var prefix = name + "=";
+  var begin = dc.indexOf("; " + prefix);
+  if (begin == -1) {
+    begin = dc.indexOf(prefix);
+    if (begin != 0) return null;
+  } else
+    begin += 2;
+  var end = document.cookie.indexOf(";", begin);
+  if (end == -1)
+    end = dc.length;
+  return unescape(dc.substring(begin + prefix.length, end));
+}
+
+
+/*
+   name - name of the cookie
+   [path] - path of the cookie (must be same as path used to create cookie)
+   [domain] - domain of the cookie (must be same as domain used to
+     create cookie)
+   path and domain default if assigned null or omitted if no explicit
+     argument proceeds
+*/
+
+function deleteCookie(name, path, domain) {
+  if (getCookie(name)) {
+    document.cookie = name + "=" +
+    ((path) ? "; path=" + path : "") +
+    ((domain) ? "; domain=" + domain : "") +
+    "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+  }
+}
+
+// date - any instance of the Date object
+// * hand all instances of the Date object to this function for "repairs"
+
+function fixDate(date) {
+  var base = new Date(0);
+  var skew = base.getTime();
+  alert(skew);
+  if (skew > 0)
+    date.setTime(date.getTime() - skew);
+}
+
+// -->
+</SCRIPT>
+<script>
+function TopSwitch()
+{
+   var now = new Date();
+   //alert(now.toGMTString());
+   fixDate(now);
+   //alert(now.toGMTString());
+   now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+   now.setTime(now.getTime() + 60 * 1000);
+   //alert(now.toGMTString());
+	var vSwitch = getCookie("TopSwitch");
+	if(vSwitch == 'OFF' )
+	{
+		//open
+		setCookie("TopSwitch", "ON", now,"","openfoundry.org");
+		document.getElementById("header").style.display = "block";
+	}
+	else
+	{
+		//Close
+		setCookie("TopSwitch", "OFF", now,"","openfoundry.org");
+		document.getElementById("header").style.display = "none";
+	}
+}
+function SetTop()
+{
+	var vSwitch = getCookie("TopSwitch");
+	if(vSwitch == 'OFF' )
+	{
+		document.getElementById("header").style.display = "none";
+	}
+	else
+	{
+		document.getElementById("header").style.display = "block";
+	}
+}
+//alert(window.onload);
+//window.onload = new function(){TopSwitch();}
+//alert( getCookie("TopSwitch") );
+</script>
+<style>
+#header1 {height: 63px; margin: 0px; padding: 0px; min-width: 600px; background: url(/img/top-bg.gif) top left repeat-x;border-bottom: 1px solid #ccc;}
+#MainWidgets1 { top:77px; left:0; position:absolute; width:150px; padding-left: 5px; padding-right: 5px; }
+#MainBody1 {padding-right: 15px; padding-left: 170px;padding-top: 0px; margin: 0px; width:auto; }
+
+#header {height: 63px; margin: 0px; padding: 0px; min-width: 600px; background: url(/img/top-bg.gif) top left repeat-x;border-bottom: 1px solid #ccc;}
+#MainWidgets { border:solid #555555 1px; width:150px; float:left;}
+#MainBody { border:solid #555555 1px; width:700px; float:left; position:static; }
+#MainScroll { height:400px; overflow-y:scroll; }
+</style></head><body>
+<div id="all">
+<div id="header">header</div>
+<div id="switch"><a href="javascript: TopSwitch()">Switch</a></div>
+<div id="MainScroll"><div id="MainWidgets">menu</div>
+<div id="MainBody">body<a href="http://www.yahoo.com.tw">yahoo</a>   <a href="http://testsvn.openfoundry.org/newpage.html">newpage</a>
+1234567890123456789012345678901234567890123456789012345678901
+<br><br>2<br><br>3<br><br>4<br><br>5<br><br>6<br><br>7<br><br>8<br><br>9<br><br>0<br><br>1<br><br>2<br><br>3<br><br>4<br><br>5<br><br>6<br><br>7<br><br>8<br><br>9<br><br>0<br><br>1<br><br>2<br><br>3<br><br>4<br><br>5<br><br>6<br><br>7<br><br>8<br><br>9<br><br>0<br><br>1<br><br>2<br><br>3<br><br>4<br><br>5<br><br>6<br><br>7<br><br>8<br><br>9<br><br>0<br><br>
+</div></div></div><br></body></html>
+<script>
+SetTop();
+</script>
